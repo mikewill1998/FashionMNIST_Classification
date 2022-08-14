@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, random_split
 
-from torch.utils import data
+
 def get_default_device():
   if torch.cuda.is_available():
     return torch.device('cuda')
@@ -192,12 +192,10 @@ grad_clip = 0.1
 weight_decay = 0.0001
 opt_func = torch.optim.Adam
 
-# Commented out IPython magic to ensure Python compatibility.
 # # start to train here!!!
-# %%time
-# history = [evaluate(model, valid_dl)]
-# history += fit_one_cycle(epochs, max_lr, model, train_dl, valid_dl,
-#                          weight_decay, grad_clip, opt_func)
+history = [evaluate(model, valid_dl)]
+history += fit_one_cycle(epochs, max_lr, model, train_dl, valid_dl,
+                         weight_decay, grad_clip, opt_func)
 
 # plot
 def accuracy_vs_epoch(history):
